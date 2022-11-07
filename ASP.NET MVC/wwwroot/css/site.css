@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 1024px;
+    margin: auto; /* Centers the page */
+    margin-top: 10px;
+    text-align: left;
+    background-color: rgb(200, 191, 231);
+}
+
+/* MAIN GRID INDEX */
+.grid-container {
+    height: 870px;
+    display: grid;
+    gap: 4px;
+    grid-template-columns: 106px 1fr 106px;
+    grid-template-rows: 106px 1fr 26px auto;
+    grid-template-areas:
+        'hed hed hed'
+        '.   con .'
+        '.   .   .' /*This is the 20px space*/
+        'fot fot fot';
+    background-color: rgb(112, 146, 190);
+    border-style: solid;
+    border-width: medium;
+}
+
+.header {
+    grid-area: hed;
+    display: grid;
+    grid-template-columns: 106px 5fr 106px;
+    grid-template-rows: 106px;
+    grid-template-areas:
+        'h1 h2 .';
+}
+
+.header-item {
+    border-style: none;
+}
+
+.header-item-1 {
+    grid-area: h1;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.header-item-2 {
+    grid-area: h2;
+}
+
+.content {
+    grid-area: con;
+    background-color: rgb(248, 247, 237);
+    text-align: left;
+    border-style: solid;
+    border-width: medium;
+}
+
+.footer {
+    grid-area: fot;
+    display: grid;
+    background-color: rgb(163, 73, 164);
+    border-style: solid;
+    border-width: medium;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+
+/* ------------------------------------------------------------ */
+/* CSS for About */
+
+.vGrid-container {
+    font-family: Segoe UI Tahoma Verdana Sans-Serif;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 132px auto 1em;
+    grid-template-areas:
+        'vhed'
+        'vcon'
+        'vfot';
+    height: 687px;
+    overflow-y: scroll; /* Creates vertical scrollbar when needed */
+}
+
+.vHeader {
+    grid-area: vhed;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        'vh1 vh2 vh3';
+}
+
+.vHeader-item {
+    border-style: none;
+    padding: 10px;
+}
+
+.vHeader-item-1 {
+    grid-area: vh1;
+}
+
+.vHeader-item-2 {
+    grid-area: vh2;
+    text-align: center;
+}
+
+.vHeader-item-3 {
+    grid-area: vh3;
+    text-align: right;
+    font-size: xx-large;
+}
+
+.vContent {
+    grid-area: vcon;
+    text-align: left;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.vFooter {
+    grid-area: vfot;
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+.CVblue {
+    color: rgb(0, 112, 192);
+}
+
+.black {
+    color: black;
+}
+/* END of CSS for About */
+/* ------------------------------------------------------------ */

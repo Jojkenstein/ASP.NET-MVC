@@ -1,13 +1,48 @@
 ﻿<!DOCTYPE html>
+<html lang="eng">
 
-<html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    
+ 
 </head>
+
 <body>
-    <div>
-        @RenderBody()
+    <div class="grid-container">
+        <div class="header">
+            <div class="header-item header-item-1">
+                <img src="~/images/logo_medium.png" alt="LOGO">
+            </div>
+            <div class="header-item header-item-2">
+                <nav>
+                    <ul>
+                        <li>
+                            <a asp-controller="Home" asp-action="Index">Index</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="About">About</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="Projects">Projects</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="content">
+            @RenderBody()
+        </div>
+        <div class="footer">
+            <span>@DateTime.Now.ToString("yyyy-MM-dd") &#169;Jay Kay</span>
+        </div>
     </div>
 </body>
+
 </html>
