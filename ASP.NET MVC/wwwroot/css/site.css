@@ -4,7 +4,8 @@ body {
     margin: auto; /* Centers the page */
     margin-top: 10px;
     text-align: left;
-    background-color: rgb(200, 191, 231);
+    /*background-color: rgb(200, 191, 231);*/
+    background-color: rgb(112, 146, 190);
 }
 
 /* MAIN GRID INDEX */
@@ -19,7 +20,8 @@ body {
         '.   con .'
         '.   .   .' /*This is the 20px space*/
         'fot fot fot';
-    background-color: rgb(112, 146, 190);
+    /*background-color: rgb(112, 146, 190);*/
+    background-color: rgb(200, 191, 231);
     border-style: solid;
     border-width: medium;
 }
