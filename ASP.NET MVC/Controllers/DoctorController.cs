@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET_MVC.Controllers
 {
-    public class Doctor : Controller
+    public class DoctorController : Controller
     {
         //HttpGet
         public IActionResult Temperature()

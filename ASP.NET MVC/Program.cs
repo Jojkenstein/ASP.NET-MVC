@@ -1,23 +1,30 @@
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMvc();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(15);
+});
 
 var app = builder.Build();
 
+app.UseSession();
 app.UseStaticFiles();
 app.UseRouting();
 
-//VERKAR EJ FUNGERA PLÖTSLIGT
 app.MapControllerRoute(
 name: "Fever Check",
-pattern: "fevercheck",
+pattern: "FeverCheck",
 defaults: new { controller = "Doctor", action = "Temperature" });
+
+app.MapControllerRoute(
+name: "Guessing Game",
+pattern: "GuessingGame",
+defaults: new { controller = "Games", action = "SetGuessNr" });
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-
 
 
 app.Run();

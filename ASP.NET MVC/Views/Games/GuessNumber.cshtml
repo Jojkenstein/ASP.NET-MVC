@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "GuessNumber";   //Ändrade från "Game"
+}
+
+<div class="vContent">
+    <h1>Game</h1>
+
+    <p>Guess a number between 1 and 100</p>
+
+    <form asp-action="SetGuessNr" method="post">
+        <label>Please enter your guess: </label>
+        <input type="number" step="1" min="1" max="100" name="guessNr" />
+
+    </form>
+
+    @if (ViewBag.Result != null)
+    {
+        <p>@ViewBag.Result</p>
+    }
+</div>
