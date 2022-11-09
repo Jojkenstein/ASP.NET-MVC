@@ -20,7 +20,7 @@ defaults: new { controller = "Doctor", action = "Temperature" });
 app.MapControllerRoute(
 name: "Guessing Game",
 pattern: "GuessingGame",
-defaults: new { controller = "Games", action = "SetGuessNr" });
+defaults: new { controller = "Games", action = "GuessNumber" });
 
 app.MapControllerRoute(
     name: "default",

@@ -5,13 +5,13 @@ namespace ASP.NET_MVC.Controllers
 {
     public class GamesController : Controller
     {
-        public IActionResult SetGuessNr()
+        public IActionResult GuessNumber()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult SetGuessNr(string guessNr)
+        public IActionResult GuessNumber(string guessNr)
         {
             //Make sure session is set
             if (guessNr != null)
