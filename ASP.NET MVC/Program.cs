@@ -3,10 +3,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMvc();
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(15);
+    options.IdleTimeout = TimeSpan.FromMinutes(1);
 });
 
 var app = builder.Build();
+
 
 app.UseSession();
 app.UseStaticFiles();
