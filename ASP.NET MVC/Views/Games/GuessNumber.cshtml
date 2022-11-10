@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "GuessNumber";   //Ändrade från "Game". Ska det egentligen stå "GuessNumber"?
+}
+
+<div class="vContent">
+    <h1>Game</h1>
+
+    @if (ViewBag.Set != null)
+    {
+        <p><strong>@ViewBag.Set</strong></p>
+    }
+
+    <p>Guess a number between 1 and 100</p>
+
+    <form asp-controller="Games" asp-action="GuessNumber" method="post">
+        <label>Please enter your guess: </label>
+        <input type="number" step="1" min="1" max="100" name="guessNr" />
+        <input type="submit" value="Send number" />
+    </form>
+
+    @if (ViewBag.Result != null)
+    {
+        <p><strong>@ViewBag.Result</strong></p>
+    }
+    @if (ViewBag.Counter != null)
+    {
+        <p>@ViewBag.Counter</p>
+    }
+    @if (ViewBag.Reset != null)
+    {
+        <p><strong>@ViewBag.Reset</strong></p>
+    }
+</div>
