@@ -1,0 +1,54 @@
+﻿@model PersonViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>People Index</h1>
+
+<h2>Search a person</h2>
+
+<form asp-action="Search" method="post">
+    <label >Name or City</label>
+    <input asp-for="@Model.searchText" />
+    <input type="submit" value="Search" />
+</form>
+
+<h2>Add new person</h2>
+
+<form asp-action="Create" method="post">
+    <label asp-for="@Model.person.Name"></label>
+    <input asp-for="@Model.person.Name" />
+    <label asp-for="@Model.person.PhoneNumber"></label>
+    <input asp-for="@Model.person.PhoneNumber" />
+    <label asp-for="@Model.person.City"></label>
+    <input asp-for="@Model.person.City" />
+    <input type="submit" value="Create" />
+</form>
+
+
+<h2>List of people</h2>
+
+<h3>Show data as table</h3>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>Id</th>*@
+            <th>Name</th>
+            <th>PhoneNumber</th>
+            <th>City</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model.tempList)
+        {
+            <tr>
+                @*<td>@person.Id</td>*@
+                <td>@person.Name</td>
+                <td>@person.PhoneNumber</td>
+                <td>@person.City</td>
+                <td><a asp-action="Delete" asp-route-id=@person.Id>Delete</a> </td> @* *class="btn btn-danger"* TEST OF NO BOOTSTRAP CLASS*@
+            </tr>
+        }
+    </tbody>
+</table>
