@@ -1,19 +1,19 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    width: 1100px;
-    margin: auto; /* Centers the page */
     margin-top: 10px;
-    text-align: left;
-    /*background-color: rgb(200, 191, 231);*/
     background-color: rgb(112, 146, 190);
+    /*background-color: rgb(200, 191, 231);*/
 }
 
 /* MAIN GRID INDEX */
 .grid-container {
+    font-family: Arial, Helvetica, sans-serif;
     /* To change height of View container change all 3 values with the same constant. */
     /* grid-container org-height: 870px */
     /* con grid-template-rows org-height: 693px */
     /* vGrid-container org-height: 687px */
+    
+    width: 1201px;
+    margin: auto; /* Centers the page */
     height: 970px; /* grid-container org-height: 870px */
     display: grid;
     gap: 4px;
@@ -66,18 +66,22 @@ body {
 
 .footer {
     grid-area: fot;
-    display: grid;
     background-color: rgb(163, 73, 164);
     border-style: solid;
-    border-width: medium;
-    border-left: none;
-    border-bottom: none;
     border-right: none;
-    padding: 5px;
-    height: 20px; /*THIS DOES NOT WORK WITH BOOTSTRAP*/
-    align-items: center; /*DOES NOT SEEM TO BE NEEDED*/
+    border-width: medium;
+    border-bottom: none;
     justify-content: center;
+    display: inline-grid;
+    align-items: center;
+    border-left: none;
+    grid-template-columns: auto;
+    width: auto;
     font-weight: normal;
+    padding: 0px;
+    margin-bottom: -1px;
+    margin-left: -1px; /*UGLY FIX*/
+    margin-right: -1px; /*UGLY FIX*/
 }
 
 
@@ -150,3 +154,9 @@ body {
 }
 /* END of CSS for About */
 /* ------------------------------------------------------------ */
+
+/* ONE-GRID VIEW CONTAINER */
+.vOneView {
+    overflow-y: scroll;
+    height: 787px; /*funkar på People Index*/
+}

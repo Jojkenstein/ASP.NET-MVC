@@ -1,17 +1,26 @@
-﻿namespace ASP.NET_MVC.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.Xml.Linq;
+
+namespace ASP.NET_MVC.Models
 {
     public class CreatePersonViewModel
     {
-        public static List<Person> listOfPeople = new List<Person>();
-        public static List<Person> filtered = new List<Person>(); // To be able to have two forms on one view
-        public static List<Person> emptyList = new List<Person>(); // FULfix då CreatePersonViewModel.filtered.Clear(); raderar alla listor
-        
+        [DisplayName("Id#")]
+        public string? Id { get; set; }  // -?
+        [Display(Name = "Name of person")]
+        [Required]
+        public string Name { get; set; }
+        [DisplayName("Phone number")]
+        [Required]
+        public string PhoneNumber { get; set; } // -?
+        [DisplayName("Town or city")]
+        [Required]
+        public string City { get; set; } // -?
 
-        public static void GeneratePeople()
-        {//Testar med City och PhoneNumber i "fel" ordning
-            listOfPeople.Add(new Person { Id = Guid.NewGuid().ToString(), Name = "Jay Kay", City = "Stockholm", PhoneNumber = "555-692471337" });
-            listOfPeople.Add(new Person { Id = Guid.NewGuid().ToString(), Name = "Mike Truk", City = "Dallas", PhoneNumber = "555-702571234" });
-            listOfPeople.Add(new Person { Id = Guid.NewGuid().ToString(), Name = "Bobson Dugnut", City = "New York", PhoneNumber = "555-882475678" });
-        }
+        //public static List<Person> filtered = new List<Person>(); // To be able to have two forms on one view
+        //public static List<Person> emptyList = new List<Person>(); // FULfix då CreatePersonViewModel.filtered.Clear(); raderar alla listor
+
+
     }
 }

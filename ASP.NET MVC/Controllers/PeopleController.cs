@@ -5,69 +5,49 @@ namespace ASP.NET_MVC.Controllers
 {
     public class PeopleController : Controller
     {
+        public static PeopleViewModel stvm = new PeopleViewModel(); // Får ej annotations att fungera utan denna!
         public IActionResult Index()
         {
-            /*if (ModelState.IsValid)*/ //ModelState.IsValid fungerar ej
-            
-                if (CreatePersonViewModel.listOfPeople.Count == 0)
-                {
-                    CreatePersonViewModel.GeneratePeople();
-                }
-
-                if (CreatePersonViewModel.filtered.Count > 0)
-                {
-                    PersonViewModel vm2 = new PersonViewModel();
-                    vm2.tempList = CreatePersonViewModel.filtered;
-                    CreatePersonViewModel.filtered = CreatePersonViewModel.emptyList; // FULfix då CreatePersonViewModel.filtered.Clear(); raderar alla listor
-                    return View(vm2);
-                }
-            
-            PersonViewModel vm = new PersonViewModel();
-            vm.tempList = CreatePersonViewModel.listOfPeople;
+            if (PeopleViewModel.listOfPeople.Count == 0)
+            {
+                PeopleViewModel.GeneratePeople();
+            }
+            PeopleViewModel vm = new PeopleViewModel();
+            vm.tempList = PeopleViewModel.listOfPeople;
             return View(vm);
         }
-        public IActionResult CreateOrSearch()
-        {//HÄR FÅR JAG NOG LÄGGA IN !=null-SKYDD eller vänta, behövs denna ens???
-            return RedirectToAction("Index");
-        }
-        [HttpPost("person")]
-        public IActionResult Create(Person person)
+
+        [HttpPost("createPerson")]
+        public IActionResult Create(CreatePersonViewModel createPerson)
         {
-            /*if (ModelState.IsValid)*/ //FUNGERAR EJ
-            
-                
-                if (person.Name != null)
-                {
-                    person.Id = Guid.NewGuid().ToString();
-                    CreatePersonViewModel.listOfPeople.Add(person);
-                }
-            
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                createPerson.Id = Guid.NewGuid().ToString();
+                PeopleViewModel.listOfPeople.Add(new Person { Id = createPerson.Id, Name = createPerson.Name, PhoneNumber = createPerson.PhoneNumber, City = createPerson.City });
+                return RedirectToAction("Index");
+            }
+            return View("Index", stvm);
         }
+
         [HttpPost("searchText")]
         public IActionResult Search(string searchText)
         {
-            /*if (ModelState.IsValid)*/ //FUNGERAR EJ
-            
-                if (searchText != null)
-                {
-                    string searchString = searchText;
-                    PersonViewModel vm = new PersonViewModel();
-                    vm.tempList = CreatePersonViewModel.listOfPeople;
-
-                    CreatePersonViewModel.filtered = PersonViewModel.Search(searchString, vm.tempList);
-
-                }
-               
-            
+            if (searchText != null)
+            {
+                string searchString = searchText;
+                PeopleViewModel vm = new PeopleViewModel();
+                vm.tempList = PeopleViewModel.Search(searchString, PeopleViewModel.listOfPeople);
+                return View("Index", vm);
+            }
             return RedirectToAction("Index");
         }
+
         public IActionResult Delete(string id)
         {
-            var personToDelete = CreatePersonViewModel.listOfPeople.FirstOrDefault(x => x.Id == id);
+            var personToDelete = PeopleViewModel.listOfPeople.FirstOrDefault(x => x.Id == id);
             if (personToDelete != null)
             {
-                CreatePersonViewModel.listOfPeople.Remove(personToDelete);
+                PeopleViewModel.listOfPeople.Remove(personToDelete);
             }
             return RedirectToAction("Index");
         }
