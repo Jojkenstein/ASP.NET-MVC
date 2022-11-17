@@ -5,7 +5,6 @@ namespace ASP.NET_MVC.Controllers
 {
     public class PeopleController : Controller
     {
-        public static PeopleViewModel stvm = new PeopleViewModel(); // Får ej annotations att fungera utan denna!
         public IActionResult Index()
         {
             if (PeopleViewModel.listOfPeople.Count == 0)
@@ -16,20 +15,19 @@ namespace ASP.NET_MVC.Controllers
             vm.tempList = PeopleViewModel.listOfPeople;
             return View(vm);
         }
-
-        [HttpPost("createPerson")]
+        [HttpPost]
         public IActionResult Create(CreatePersonViewModel createPerson)
         {
             if (ModelState.IsValid)
             {
-                createPerson.Id = Guid.NewGuid().ToString();
-                PeopleViewModel.listOfPeople.Add(new Person { Id = createPerson.Id, Name = createPerson.Name, PhoneNumber = createPerson.PhoneNumber, City = createPerson.City });
+                PeopleViewModel.listOfPeople.Add(new Person { Id = Guid.NewGuid().ToString(), Name = createPerson.Name, PhoneNumber = createPerson.PhoneNumber, City = createPerson.City });
                 return RedirectToAction("Index");
             }
-            return View("Index", stvm);
+            PeopleViewModel vm = new PeopleViewModel();
+            vm.tempList = PeopleViewModel.listOfPeople;
+            return View("Index", vm);
         }
-
-        [HttpPost("searchText")]
+        [HttpPost]
         public IActionResult Search(string searchText)
         {
             if (searchText != null)
