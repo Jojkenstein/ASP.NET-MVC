@@ -11,9 +11,9 @@ namespace ASP.NET_MVC.Models
         public string Name { get; set; }
         [DisplayName("Phone number")]
         [Required]
-        public string PhoneNumber { get; set; } // -?
+        public string PhoneNumber { get; set; }
         [DisplayName("Town or city")]
         [Required]
-        public string City { get; set; } // -?
+        public string City { get; set; }
     }
 }
