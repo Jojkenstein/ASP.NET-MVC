@@ -37,12 +37,23 @@
 
     <h2>List of people</h2>
 
-    <h3>Show data as table</h3>
+
+
+    <h2>Show data as partial</h2>
+
+    @foreach (var person in Model.tempList)
+    {
+        <partial name="_personPartial" model="person" />
+    }
+
+</div>
+
+
+@*    <h3>Show data as table</h3>
 
     <table class="table">
         <thead>
             <tr>
-                @*<th>Id</th>*@
                 <th>Name</th>
                 <th>PhoneNumber</th>
                 <th>City</th>
@@ -53,7 +64,6 @@
             @foreach (var person in Model.tempList)
             {
                 <tr>
-                    @*<td>@person.Id</td>*@
                     <td>@person.Name</td>
                     <td>@person.PhoneNumber</td>
                     <td>@person.City</td>
@@ -61,13 +71,4 @@
                 </tr>
             }
         </tbody>
-    </table>
-
-    @*<h2>Show data as partial</h2>
-
-    @foreach (var person in Model.tempList)
-    {
-    <partial name="_personPartial" model="person" />
-    }*@
-
-</div>
+    </table>*@
