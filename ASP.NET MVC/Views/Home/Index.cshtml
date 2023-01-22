@@ -2,13 +2,23 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="vContent">
-    <h1>Index</h1>
-    <nav>
-        <ul class="grid-list">
-            <li>
+<h1>Index</h1>
+<nav>
+    <ul class="grid-list">
+        <li>
+            <p>
                 <a asp-controller="Doctor" asp-action="Temperature">Temperature</a>
-            </li>
-        </ul>
-    </nav>
-</div>
+            </p>
+        </li>
+        <li>
+            <p>
+                <a asp-controller="Games" asp-action="GuessNumber">The Guess The Number Game</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <a asp-controller="People" asp-action="Index">People Index</a>
+            </p>
+        </li>
+    </ul>
+</nav>

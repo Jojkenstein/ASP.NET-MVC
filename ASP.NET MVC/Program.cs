@@ -25,7 +25,7 @@ defaults: new { controller = "Games", action = "GuessNumber" });
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=People}/{action=Index}/{id?}");
 
 
 app.Run();

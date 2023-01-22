@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ASP.NET_MVC.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET_MVC.Controllers
 {

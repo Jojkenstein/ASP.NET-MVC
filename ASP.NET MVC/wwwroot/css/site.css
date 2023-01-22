@@ -1,20 +1,24 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    width: 1024px;
-    margin: auto; /* Centers the page */
     margin-top: 10px;
-    text-align: left;
-    /*background-color: rgb(200, 191, 231);*/
     background-color: rgb(112, 146, 190);
+    /*background-color: rgb(200, 191, 231);*/
 }
 
 /* MAIN GRID INDEX */
 .grid-container {
-    height: 870px;
+    font-family: Arial, Helvetica, sans-serif;
+    /* To change height of View container change all 3 values with the same constant. */
+    /* grid-container org-height: 870px */
+    /* con grid-template-rows org-height: 693px */
+    /* vGrid-container org-height: 687px */
+    
+    width: 1201px;
+    margin: auto; /* Centers the page */
+    height: 970px; /* grid-container org-height: 870px */
     display: grid;
     gap: 4px;
     grid-template-columns: 106px 1fr 106px;
-    grid-template-rows: 106px 1fr 26px auto;
+    grid-template-rows: 106px 793px 26px auto; /* con org-height: 693px */
     grid-template-areas:
         'hed hed hed'
         '.   con .'
@@ -24,6 +28,7 @@ body {
     background-color: rgb(200, 191, 231);
     border-style: solid;
     border-width: medium;
+    padding-bottom: 0px;
 }
 
 .header {
@@ -55,22 +60,28 @@ body {
     text-align: left;
     border-style: solid;
     border-width: medium;
+    padding-left: 0.5em;
+    /*padding: 10px;*/ /* Moved to here from .vContent [but that did not work for Home/About footer]*/
 }
 
 .footer {
     grid-area: fot;
-    display: grid;
     background-color: rgb(163, 73, 164);
     border-style: solid;
-    border-width: medium;
-    border-left: none;
-    border-bottom: none;
     border-right: none;
-    padding: 5px;
-    height: 20px;
-    align-items: center;
+    border-width: medium;
+    border-bottom: none;
     justify-content: center;
+    display: inline-grid;
+    align-items: center;
+    border-left: none;
+    grid-template-columns: auto;
+    width: auto;
     font-weight: normal;
+    padding: 0px;
+    margin-bottom: -1px;
+    margin-left: -1px; /*UGLY FIX*/
+    margin-right: -1px; /*UGLY FIX*/
 }
 
 
@@ -86,7 +97,7 @@ body {
         'vhed'
         'vcon'
         'vfot';
-    height: 687px;
+    height: 787px; /* vGrid-container org-height: 687px */
     overflow-y: scroll; /* Creates vertical scrollbar when needed */
 }
 
@@ -101,7 +112,8 @@ body {
 
 .vHeader-item {
     border-style: none;
-    padding: 10px;
+    padding: 0px;
+    padding-top: 5px; /*for profile picture*/
 }
 
 .vHeader-item-1 {
@@ -122,8 +134,9 @@ body {
 .vContent {
     grid-area: vcon;
     text-align: left;
-    padding: 10px;
+    /*padding: 10px; Put this into .content instead [but that did not work for Home/About] content */
     padding-bottom: 0px;
+    /*grid-template-rows: 100%; /*HAVE NOT TESTED THIS YET BUT IT SHOULD PROTECT FROM OVERFLOW */
 }
 
 .vFooter {
@@ -141,3 +154,9 @@ body {
 }
 /* END of CSS for About */
 /* ------------------------------------------------------------ */
+
+/* ONE-GRID VIEW CONTAINER */
+.vOneView {
+    overflow-y: scroll;
+    height: 787px; /*funkar på People Index*/
+}
