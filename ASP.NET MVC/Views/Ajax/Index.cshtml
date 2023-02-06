@@ -1,0 +1,57 @@
+﻿<label>List of people: </label>
+<button onclick="GetPeople()" id="people" type="submit">People</button>
+<br />
+<label>Id for details or delete: </label>
+<input type="text" id="id" name="id" />
+<button onclick="GetDetails()" id="details" type="submit">Details</button>
+<button onclick="DeletePerson()" id="delete" type="submit">Delete</button>
+
+<br />
+<div id="div-partial"></div>
+
+<script>
+    function GetPeople() {
+        
+        $.ajax({
+            type: "GET",
+            url: "Ajax/GetPeople",
+            success: function (response) {
+                $("#div-partial").html(response);
+            }
+        });
+    }
+</script>
+
+
+<script>
+    function GetDetails() {
+        var inputId = $("#id").val();
+        //var inputId = document.getElementById("id")
+
+        $.ajax({
+            type:"POST",
+            url: "Ajax/GetDetails?id=" + inputId,
+            success: function(response){
+                $("#div-partial").html(response);
+            }
+        });
+    }
+</script>
+
+<script>
+    function DeletePerson() {
+        var inputId = $("#id").val();
+
+        $.ajax({
+            type: "POST",
+            url: "Ajax/DeletePerson?id=" + inputId,
+            success: function (response) {
+                $("#div-partial").html(response);
+            }
+        });
+    }
+</script>
+
+<div>
+    <p>@DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")</p>
+</div>
