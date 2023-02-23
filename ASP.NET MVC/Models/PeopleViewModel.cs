@@ -6,7 +6,7 @@
         public List<Person> tempList = new List<Person>(); // t.ex. för filtrering utan att förstöra original-listan
         public string searchText { get; set; }
 
-        public CreatePersonViewModel createPerson { get; set; } // Adderad efter feedback
+        public CreatePersonViewModel createPerson { get; set; }  // Adderad efter feedback
 
         public static void GeneratePeople()
         {
